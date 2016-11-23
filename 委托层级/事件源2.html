@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html id="ht">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;font-size: 60px;}
+			#faze{
+				width: 600px;
+				height:600px;
+				background: #ccc;
+				margin: 50px 0 0 50px;
+				overflow: hidden;
+			}
+			#chil{
+				width: 200px;
+				height: 200px;
+				background: yellow;
+				margin: 150px;
+			}
+			#ds{
+				width: 450px;
+				background: #000;
+				color: #fff;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+			#zs{
+				width: 400px;
+				background: #000;
+				color: #fff;
+				position: absolute;
+				right: 500px;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body id="bd">
+		<div id="faze">
+			<div id="chil">
+				
+			</div>
+		</div>
+		<input type="text" id="te" value="" />
+		<div id="ds">
+			若为0表示为同一节点，<br />
+			若为2表示a位于b后面，<br />
+			若为4表示a位于b前，<br />
+			若为10表示a为b的后代，<br />
+			若为20表示a为b的祖级。
+		</div>
+		<div id="zs">
+		</div>
+	</body>
+	<script type="text/javascript">
+		var fuqin=document.getElementById("faze");
+		var zs=document.getElementById("zs");
+		var te=document.getElementById("te");
+		fuqin.onmouseover=function (even){
+			var even=even||window.event;
+			var fr=even.fromElement||even.relatedTargetteTa;
+			var rel=this.compareDocumentPosition(fr);
+//			this->a   fr->b
+			zs.innerHTML+='我是a:'+this.id+'<br/>我是b:'+fr.id+'<br/>我是关系:'+rel+'<br/>';
+		}
+		fuqin.onmouseout=function (even){
+			var even=even||window.event;
+			var tor=even.toElement||even.relatedTarget;
+			var rel=this.compareDocumentPosition(tor);
+			zs.innerHTML+='我是a:'+this.id+'<br/>我是b:'+tor.id+'<br/>我是关系:'+rel+'<br/>';
+		}
+	</script>
+</html>

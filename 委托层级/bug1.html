@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#ds{
+				width: 40px;
+				height: 150px;
+				background: #000;
+				position: relative;
+			}
+			#vs{
+				position: absolute;
+				width: 400px;
+				height: 150px;
+				background: red;
+				left: 400px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ds">
+			<div id="vs">
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var ds=document.getElementById("ds");
+		var vs=document.getElementById("vs");
+		var s=400;
+		var tim=null;
+		ds.onmouseenter=function (){
+			vs.style.display='block';
+			tim=setInterval(function (){
+				s-=10;
+				if(s<=40){
+					s=40;
+					clearInterval(tim);
+				}
+				vs.style.left=s+'px';
+			},5)
+		}
+		ds.onmouseleave=function (){
+			vs.style.display='none';
+			s=400;
+			vs.style.left=s+'px';
+		}
+	</script>
+</html>
